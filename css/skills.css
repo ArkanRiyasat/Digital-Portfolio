@@ -1,0 +1,500 @@
+/* Fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.skills,
+.skill-timeline,
+.download-sheet {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* skills.css */
+.skills {
+    padding: 40px 0;
+    text-align: center;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.skills h2 {
+    font-size: 2.8em;
+    margin-bottom: 60px;
+    color: var(--primary-color); /* Bright blue for heading */
+    position: relative;
+    display: inline-block;
+}
+
+.skills h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.skill-categories {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.category-button {
+    /* Glass-morphed blue background */
+    background: rgba(0, 191, 255, 0.1);
+    color: var(--primary-color);
+    /* Blue border */
+    border: 1px solid var(--primary-color);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.category-button:hover {
+    /* Blue background on hover */
+    background-color: var(--primary-color);
+    /* Dark font on hover */
+    color: var(--dark-color);
+    /* Blue glow on hover */
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
+    /* Lifted effect on hover */
+    transform: translateY(-5px);
+}
+
+.category-button.active {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+.hover-info {
+    color: #bbb;
+    font-size: 1em;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 174, 255, 0.6); /* subtle white glow */
+    text-underline-offset: 4px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.skill-item {
+    background: rgba(0, 191, 255, 0.1); /* Blueish frosted glass background */
+    border: 1px solid var(--primary-color); /* Blue border */
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+.skill-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 25px var(--primary-color), 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+}
+
+.skill-item i {
+    font-size: 4em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.skill-item:hover i {
+    transform: scale(1.1);
+    text-shadow: 0 0 15px var(--primary-color);
+}
+
+.skill-item h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.skill-description {
+    font-size: 0.9em;
+    color: #bbb;
+    margin-top: 10px;
+    text-align: center;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.skill-item:hover .skill-description {
+    opacity: 1;
+    max-height: 100px; /* Adjust as needed to fit content */
+}
+
+.skill-links {
+    margin-top: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.skill-item:hover .skill-links {
+    opacity: 1;
+}
+
+.project-link {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #1a1a1a;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.project-link:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress {
+    height: 100%;
+    width: 0%; /* Initial width for animation */
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 5px;
+    transition: width 1s ease-in-out;
+}
+
+.skill-level-tooltip {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    opacity: 0; /* Changed from 1 to 0 */
+    transition: opacity 0.3s ease;
+}
+
+.progress-bar:hover .skill-level-tooltip {
+    opacity: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .skills h2 {
+        font-size: 2.2em;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-item {
+        padding: 25px;
+    }
+
+    .skill-item i {
+        font-size: 3.5em;
+    }
+
+    .skill-item h3 {
+        font-size: 1.5em;
+    }
+}
+
+/* Skill Timeline Section */
+.skill-timeline {
+    padding: 40px 0;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+}
+
+.skill-timeline h2 {
+    font-size: 2.8em;
+    margin-bottom: 60px;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+}
+
+.skill-timeline h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.timeline-line {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: var(--primary-color);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+}
+
+.timeline-entry {
+    position: relative;
+    width: 45%;
+    margin: 40px 0;
+  }
+
+  /* Odd entries float right */
+  .timeline-entry:nth-child(odd) {
+    left: 55%;
+    transform: none;
+  }
+
+  /* Even entries float left */
+  .timeline-entry:nth-child(even) {
+    left: 0;
+    transform: none;
+  }
+
+  /* Year markers stay near the center line */
+  .timeline-entry .year {
+    position: absolute;
+    top: 0;
+    font-weight: bold;
+    font-size: 0.9rem;
+    background: var(--primary-color);
+    color: var(--white-color);
+    padding: 6px 12px;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+    z-index: 1;
+  }
+
+  /* Position year markers closer to center */
+  .timeline-entry:nth-child(odd) .year {
+    left: -30px;
+    transform: translateX(-100%);
+  }
+
+  .timeline-entry:nth-child(even) .year {
+    right: -30px;
+    transform: translateX(100%);
+  }
+
+.timeline-entry .card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+  backdrop-filter: blur(15px); /* Increased blur for stronger glass effect */
+  -webkit-backdrop-filter: blur(15px); /* Safari support */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* More prominent shadow */
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.timeline-entry .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px var(--primary-color), 0 8px 20px rgba(0, 191, 255, 0.4);
+}
+
+.timeline-entry .card .timeline-icon {
+  font-size: 2.5em;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.timeline-entry .card:hover .timeline-icon {
+  transform: scale(1.1);
+  text-shadow: 0 0 15px var(--primary-color);
+}
+
+  .timeline-entry .card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+  }
+
+  .timeline-entry .card li {
+    margin-bottom: 10px;
+    color: #bbb;
+    font-size: 1em;
+    line-height: 1.6;
+  }
+
+.timeline-entry .card p {
+  font-size: 1em;
+  color: #bbb;
+  line-height: 1.6;
+}
+
+.timeline-item:hover .timeline-content {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .timeline-container::after {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 60px;
+        padding-right: 10px;
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 0%;
+    }
+
+    .timeline-dot {
+        left: 14px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 14px;
+        right: auto;
+    }
+
+    .timeline-date {
+        position: relative;
+        top: auto;
+        left: auto;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-date,
+    .timeline-item:nth-child(even) .timeline-date {
+        left: auto;
+        right: auto;
+    }
+
+    .timeline-content {
+        text-align: left;
+    }
+}
+
+/* Downloadable Skill Sheet Section */
+.download-sheet {
+    padding: 80px 0;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+}
+
+.download-sheet h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.download-sheet p {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    color: #bbb;
+}
+
+.download-button {
+    display: inline-block;
+    /* Glass-morphed blue background */
+    background: rgba(0, 191, 255, 0.1);
+    /* Blue border */
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.download-button:hover {
+    /* Blue background on hover */
+    background: var(--primary-color);
+    /* Dark font on hover */
+    color: var(--dark-color);
+    /* Blue glow on hover */
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
+    /* Lifted effect on hover */
+    transform: translateY(-5px);
+}
+
+.download-button:active {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .download-sheet h2 {
+        font-size: 2.2em;
+    }
+
+    .download-sheet p {
+        font-size: 1em;
+    }
+
+    .download-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}

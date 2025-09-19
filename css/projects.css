@@ -1,0 +1,441 @@
+:root {
+    --primary-color: #00bfff; /* Bright blue */
+    --secondary-color: #007bff; /* Darker blue */
+    --dark-color: #1a1a1a; /* Dark background */
+    --light-color: #2c2c2c; /* Slightly lighter dark for contrast */
+    --text-color: #e0e0e0; /* Light text for dark background */
+    --light-text-color: #b0b0b0; /* Lighter text for secondary info */
+    --white-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--dark-color); /* Set background for html */
+}
+
+body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--white-color);
+    /* Removed specific padding to allow global body padding from style.css to take effect */
+    background-color: var(--dark-color); /* Set background for body */
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+section {
+    padding: 100px 0;
+    background-color: #1a1a1a; /* Apply the new dark background color */
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+}
+
+#projects h2 {
+    font-size: 2.8em;
+    margin-bottom: 60px;
+    color: var(--primary-color);
+    text-align: center;
+    position: relative;
+    display: inline-block;
+}
+
+#projects h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 3rem; }
+h3 { font-size: 2.5rem; }
+h4 { font-size: 2rem; }
+h5 { font-size: 1.5rem; }
+h6 { font-size: 1.2rem; }
+
+p {
+    margin-bottom: 15px;
+    color: var(--light-text-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    /* Glass-morphed blue background */
+    background: rgba(0, 191, 255, 0.1);
+    /* Blue border */
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    /* Blue background on hover */
+    background: var(--primary-color);
+    /* Dark font on hover */
+    color: var(--dark-color);
+    /* Blue glow on hover */
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
+    /* Lifted effect on hover */
+    transform: translateY(-5px);
+}
+
+.btn:active {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker shade of primary on hover */
+    color: var(--white-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+.btn-secondary:hover {
+    background-color: #545b62; /* Darker shade of secondary on hover */
+    color: var(--white-color);
+}
+
+/* Project Modal Styles */
+
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    position: relative;
+}
+
+.in-progress-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05); /* subtle transparency */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* thin, soft border */
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+    backdrop-filter: blur(4px); /* frosted glass effect */
+    -webkit-backdrop-filter: blur(4px); /* For Safari */
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Added to prevent content overflow */
+    height: 650px; /* Increased fixed height for project cards */
+    display: flex; /* Added to enable flexbox for internal alignment */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Distribute space between content and links */
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card:hover {
+    border-color: rgba(0, 191, 255, 0.6); /* Primary color for border on hover */
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 191, 255, 0.4); /* Stronger glow with primary color */
+}
+
+.project-card img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+}
+
+.project-card .project-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.project-card .btn-small {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+
+.project-details {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(26,26,26,0.8), rgba(26,26,26,0.8)); /* Adjusted opacity for better overlay */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none; /* Prevents interaction when hidden */
+  transition: opacity 0.3s ease;
+  overflow-y: auto; /* Enable scrolling for content */
+  padding: 20px;
+}
+
+.project-details.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.project-details .modal-content-wrapper {
+    background: linear-gradient(135deg, rgba(26,26,26,0.6), rgba(26,26,26,0.4));
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    padding: 30px;
+    width: 80%;
+    max-width: 800px;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    /* Removed transform and animation for debugging */
+    overflow-y: auto; /* Allow scrolling within the modal content */
+    max-height: 90vh; /* Limit height to prevent overflow of the viewport */
+}
+
+/* Removed @keyframes modalSlideIn for debugging */
+
+.project-details .close-button {
+    color: var(--text-color);
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 1001; /* Ensure close button is above other content */
+}
+
+.project-details .close-button:hover,
+.project-details .close-button:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.project-details h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+.project-details p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.project-details #modalTechStack, .project-details #modalScreenshots {
+    margin-bottom: 15px;
+}
+
+.project-details .project-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.project-details .project-links .btn {
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.project-details .project-links .btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.project-details .project-links .btn-primary:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.project-details .project-links .btn.secondary {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+.project-details .project-links .btn.secondary:hover {
+    background-color: var(--secondary-color-dark);
+}
+
+@media (max-width: 768px) {
+    .project-details .modal-content-wrapper {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .project-details h3 {
+        font-size: 1.5em;
+    }
+
+    .project-details p {
+        font-size: 1em;
+    }
+
+    .project-details .close-button {
+        font-size: 30px;
+        top: 10px;
+        right: 20px;
+    }
+}.project-details .screenshots-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between screenshots */
+    justify-content: center; /* Center images if there's space */
+    width: 100%; /* Ensure container takes full width */
+}
+
+.project-details .screenshot-img {
+    max-width: 100%; /* Ensure image doesn't overflow its container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.project-details .tech-stack-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; /* Adjusted gap to match modal */
+    margin-top: 10px;
+}
+
+.project-details .modal-tech-badge {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 0.9em;
+    color: var(--white-color);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    white-space: nowrap;
+}
+
+.tech-stack-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px; /* Adjusted gap for more elegant spacing */
+  margin-top: 10px;
+}
+
+.tech-badge {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 0.9em;
+    color: var(--white-color);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    white-space: nowrap;
+}
+
+
+.project-card.animate-entry {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.project-card.animate-entry.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.projects {
+    padding: 100px 0;
+    text-align: center;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+

@@ -1,0 +1,236 @@
+/* ===============================
+   Hero Section
+================================= */
+.hero-about {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+              url('../img/hero-bg.png') no-repeat center center / cover;
+  color: var(--light-color);
+  padding: 100px 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.hero-about h1 {
+  font-size: 3.5rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-about p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ===============================
+   About Section Layout
+================================= */
+.about-detailed {
+  padding: 80px 0;
+  background-color: var(--dark-color-alt);
+  color: var(--light-color);
+}
+
+.about-detailed .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.section-heading {
+  position: relative;
+  display: inline-block;
+  font-size: 2.5rem;
+  color: var(--primary-color); /* This makes it blue */
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+/* ===============================
+   Bio & Image
+================================= */
+.about-bio h2.section-heading {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--primary-color); /* This makes the underline pink or accent */
+  border-radius: 2px;
+}
+
+.about-bio p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.about-image img {
+  max-width: 100%;
+  max-height: 600px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.about-image img:hover {
+  transform: translateY(-5px);
+}
+
+/* ===============================
+   Section Blocks
+================================= */
+.about-section {
+  padding: 30px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  background-color: rgba(30, 30, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+}
+
+.about-section h3.section-heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.about-section p,
+.about-section ul {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.about-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-section ul li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 10px;
+  color: var(--light-text-color);
+}
+
+.about-section ul li::before {
+  content: '\2022';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+/* ===============================
+   Links
+================================= */
+.about-section a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.about-section a:hover {
+  color: var(--light-color);
+  text-decoration: underline;
+}
+
+/* ===============================
+   Animations
+================================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+}
+
+/* Staggered animation delays */
+.about-detailed .about-grid {
+  animation-delay: 0.2s;
+}
+
+.about-detailed .about-section:nth-of-type(1) {
+  animation-delay: 0.4s;
+}
+.about-detailed .about-section:nth-of-type(2) {
+  animation-delay: 0.6s;
+}
+.about-detailed .about-section:nth-of-type(3) {
+  animation-delay: 0.8s;
+}
+
+/* ===============================
+   Responsive Design
+================================= */
+@media (max-width: 768px) {
+  .hero-about h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-about p {
+    font-size: 1rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-bio h2.section-heading,
+  .about-section h3.section-heading {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-about {
+    padding: 80px 0;
+    min-height: 300px;
+  }
+
+  .hero-about h1 {
+    font-size: 2rem;
+  }
+
+  .about-detailed {
+    padding: 50px 0;
+  }
+
+  .about-section {
+    padding: 20px;
+  }
+}
